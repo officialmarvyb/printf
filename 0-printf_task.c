@@ -14,36 +14,35 @@ int _printf(const char *format, ...)
 	/*Initialize the va_list with the variable number of arguments*/
 	va_start(args, format);
 
-	while (*format)
-		if (*format == '%')
-			format++;
-			switch (*format)
-				case 'c':/*Character conversion specifier*/
-					_putchar(va_arg(args, int));
-					k++;
-					break;
-				case 's':/*String conversion specifier*/
-					str = va_arg(args, char *);
-					if (str == NULL)
-						str = "(null)";
-					while (*str)
-						_putchar(*str);
-						str++;
-						k++;
-					break;
-				case '%':/* % conversion specifier*/
-					_putchar('%');
-					k++;
-					break;
-				default:
-					_putchar('%');
-					_putchar(*format);
-					k += 2;
-					break;
+	while (format && *format)
+	{
+		if (*format == '%' && format++)
+		{
+			if (*format == 'c')
+				k += _putchar(va_arg(args, int));
+			else if (*format == 's')
+			{
+				str = va_arg(args, char *);
+				if (str == NULL)
+					str = "(null)";
+				while (*str)
+				{
+					k += _putchar(*str);
+					str++;
+				}
+			}
+		else if (*format == '%')
+			k += _putchar('%');
 		else
-			_putchar(*format);
-			k++;
-		format++;
+		{
+			k += _putchar('%');
+			k += _putchar(*format);
+		}
+	}
+	else
+		k += _putchar(*format);
+	format++;
+	}
 	va_end(args);/* Clean up the va_list*/
 	return (k);
 }

@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stdio.h>
 
 /**
  * my_printf - a simplified printf-like function for %d and %i specifiers
@@ -20,12 +18,12 @@ void my_printf(const char *format, ...)
 		{
 			int value = va_arg(args, int);
 
-			printf("%d", value);
+			_printf("%d", value);
 			format++;
 		}
 		else
 		{
-			putchar(*format);
+			_putchar(*format);
 		}
 		format++;
 	}

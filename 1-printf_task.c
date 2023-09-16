@@ -18,7 +18,7 @@ void my_printf(const char *format, ...)
 		{
 			int value = va_arg(args, int);
 
-			_printf("%d", value);
+			_putchar("%d", value);
 			format++;
 		}
 		else

@@ -1,10 +1,12 @@
 #include "main.h"
+
 /**
  * _printf - Produces output according to a format.
  * @format: A character string containing format specifiers.
  *
  * Return: The number of characters printed (excluding the null byte).
  */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -13,36 +15,28 @@ int _printf(const char *format, ...)
 	/*Initialize the va_list with the variable number of arguments*/
 	va_start(args, format);
 
-	if (format == NULL)
-	return (-1);
-
-	while (*format)
+	while (format && *format)
 	{
-		if (*format != '%')
-			_putchar(*format);
-			k++;
-		else if (*(format + 1) == '%')
-			_putchar('%');
-			k++;
-			format++;
-		else if (*(format + 1) == 'c')
-		_putchar(va_arg(args, int));
-		k++;
-		format++;
-		}
-		else if (*(format + 1) == 's')
+		if (*format == '%' && format++)
 		{
-			str = va_arg(args, char *);
-			if (str == NULL)
-				str = "(null)";
-			while (*str)
+			if (*format == 'c')
+				k += _putchar(va_arg(args, int));
+			else if (*format == 's')
 			{
-				_putchar(*str);
-				k++;
-				str++;
+				str = va_arg(args, char *) ?: "(null)";
+				while (*str)
+					k += _putchar(*str++);
 			}
-			format++;
+			else if (*format == '%')
+				k += _putchar('%');
+			else
+			{
+				k += _putchar('%');
+				k += _putchar(*format);
+			}
 		}
+		else
+			k += _putchar(*format);
 		format++;
 	}
 

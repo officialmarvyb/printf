@@ -27,7 +27,8 @@ int _printf(const char *format, ...)
 				if (str == NULL)
 					str = "(null)";
 				while (*str)
-					k += _putchar(*str++);
+					k += _putchar(*str);
+					str++;
 			}
 			else if (*format == '%')
 				k += _putchar('%');

@@ -8,6 +8,7 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
+int print_number(int n);
 void my_printf(const char *format, ...);
 
 #endif

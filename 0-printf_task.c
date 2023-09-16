@@ -23,7 +23,9 @@ int _printf(const char *format, ...)
 				k += _putchar(va_arg(args, int));
 			else if (*format == 's')
 			{
-				str = va_arg(args, char *) ?: "(null)";
+				str = va_arg(args, char *);
+				if (str == NULL)
+					str = "(null)";
 				while (*str)
 					k += _putchar(*str++);
 			}

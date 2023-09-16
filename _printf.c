@@ -28,9 +28,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 'd')
 			{
-
-			int_p = va_arg(args, int);
-			print_number(int_p);
+				k += _putchar(va_arg(args, int));
 			}
 			else if (*format == '%')
 				k += _putchar('%');
@@ -44,7 +42,6 @@ int _printf(const char *format, ...)
 			k += _putchar(*format);
 		format++;
 	}
-	k--
 	va_end(args);
 	return (k);
 }

@@ -38,10 +38,10 @@ int _printf(const char *format, ...)
 			k += _putchar('%');
 			k += _putchar(*format);
 		}
-	}
-	else
-		k += _putchar(*format);
-	format++;
+		}
+		else
+			k += _putchar(*format);
+		format++;
 	}
 	va_end(args);/* Clean up the va_list*/
 	return (k);

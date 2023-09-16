@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 			k += _putchar(*format);
 		format++;
 	}
-
+	k--
 	va_end(args);
 	return (k);
 }

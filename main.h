@@ -34,4 +34,10 @@ int _printf(const char *format, ...);
 int handle_print(const char *formatspecifier, int *j,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
+/*Specifiers*/
+int get_flags(const char *format, int *j);
+int get_width(const char *format, int *j, va_list arg);
+int get_precision(const char *format, int *j, va_list arg);
+int get_size(const char *format, int *j);
+
 #endif

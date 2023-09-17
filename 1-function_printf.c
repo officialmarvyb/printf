@@ -18,7 +18,7 @@ int print_char(va_list arg, char buffer[],
 {
 	char c = va_arg(arg, int);
 
-	return (handle_write_char(c, buffer, flags, width, precision, size));
+	return (write_character(c, buffer, flags, width, precision, size));
 }
 
 /************************* PRINT A STRING *************************/
@@ -60,7 +60,7 @@ int print_string(va_list list, char buffer[],
 
 	if (width > length)
 	{
-		if (flags & F_MINUS)
+		if (flags & FL_MINUS)
 		{
 			write(1, &str[0], length);
 			for (j = width - length; j > 0; j--)
@@ -95,7 +95,7 @@ int print_string(va_list list, char buffer[],
 int print_percent(va_list type, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	UNUSED(types);
+	UNUSED(type);
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
@@ -121,16 +121,16 @@ int print_int(va_list args, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int j = BUFFER_SIZE - 2;
-	int num_is_negative = 0;
+	int num_negative = 0;
 	long int n = va_arg(args, long int);
 	unsigned long int num;
 
-	n = convert_size_number(n, size);
+	n = convert_number_size(n, size);
 
 	if (n == 0)
 		buffer[j--] = '0';
 
-	buffer[BUFF_SIZE - 1] = '\0';
+	buffer[BUFFER_SIZE - 1] = '\0';
 	num = (unsigned long int)n;
 
 	if (n < 0)

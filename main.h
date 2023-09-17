@@ -7,6 +7,17 @@
 #include <stdarg.h>
 
 #define BUFFER_SIZE 1024
+#define UNUSED(x) (void)(x)
+
+#define FL_MINUS 1
+#define FL_PLUS 2
+#define FL_ZERO 4
+#define FL_HASH 8
+#define FL_SPACE 16
+
+/* SIZE */
+#define SI_LONG 2
+#define SI_SHORT 1
 
 /**
  * struct formatspecifier - A new type describing formatspecifier
@@ -40,4 +51,11 @@ int get_width(const char *format, int *j, va_list arg);
 int get_precision(const char *format, int *j, va_list arg);
 int get_size(const char *format, int *j);
 
+/*Funtions to print character, percent sign and string*/
+int print_char(va_list arg, char buffer[],
+	int flags, int width, int precision, int size);
+int print_string(va_list list, char buffer[],
+	int flags, int width, int precision, int size);
+int print_percent(va_list type, char buffer[],
+	int flags, int width, int precision, int size);
 #endif

@@ -206,7 +206,7 @@ int write_pointer(char buffer[], int ind, int length,
  *
  * Return: Number of characters printed.
  */
-int write_unsigned(int num_negative, int ind,
+int write_unsgn(int num_negative, int ind,
 	char buffer[],
 	int flags, int width, int precision, int size)
 {

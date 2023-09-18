@@ -22,7 +22,7 @@
 /**
  * struct fmt - A new type describing formatspecifier
  *
- * @formatspecifier: The format.
+ * @fmt: The format.
  * @fun: The function associated.
  */
 

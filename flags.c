@@ -103,9 +103,10 @@ int get_precision(const char *format, int *i, va_list args)
 			break;
 	}
 	if (precision < 0)
+	{
 		precision = -1
-
-	* i = curr_i - 1;
+	}
+	*i = curr_i - 1;
 
 	return (precision);
 }

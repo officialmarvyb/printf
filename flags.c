@@ -87,7 +87,7 @@ int get_precision(const char *format, int *i, va_list args)
 	precision = 0;
 	curr_i++;
 
-	for (curr_i += 1; format[curr_i] != '\0'; curr_i++)
+	for (; format[curr_i] != '\0'; curr_i++)
 	{
 		if (type_is_digit(format[curr_i]))
 		{
@@ -103,8 +103,10 @@ int get_precision(const char *format, int *i, va_list args)
 		else
 			break;
 	}
-	/*if (precision < 0)*/
-		/*precision = -1;*/
+	if (precision < 0)
+	{
+		precision = -1;
+	}
 	*i = curr_i - 1;
 
 	return (precision);
